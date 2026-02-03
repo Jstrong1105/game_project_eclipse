@@ -6,7 +6,9 @@ import java.io.InputStreamReader;
 
 public class InputHandler
 {
+	
 	private static final BufferedReader br = new BufferedReader(new InputStreamReader(System.in)); 
+	
 	
 	// 문자를 입력받는 메소드
 	public static String readString(String prompt)
