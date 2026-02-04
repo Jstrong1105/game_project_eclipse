@@ -51,7 +51,7 @@ public class InputHandler
 	{
 		while(true)
 		{
-			int num = readInt(prompt + " (" + min + " ~ " + max + ") : ");
+			int num = readInt(prompt);
 			
 			if(num < min || num > max)
 			{
@@ -60,6 +60,28 @@ public class InputHandler
 			else
 			{
 				return num;
+			}
+		}
+	}
+	
+	// True/False 를 반환하는 메소드
+	public static boolean readBoolean(String prompt,String trueAnswer, String falseAnswer)
+	{	
+		while(true)
+		{
+			String answer = readString(prompt);
+			
+			if(answer.equalsIgnoreCase(trueAnswer))
+			{
+				return true;
+			}
+			else if(answer.equalsIgnoreCase(falseAnswer))
+			{
+				return false;
+			}
+			else
+			{
+				System.out.println("잘못된 입력입니다.");
 			}
 		}
 	}
