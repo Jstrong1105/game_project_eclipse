@@ -3,8 +3,14 @@ package domain.minesweeper;
 /*
  * 지뢰찾기 옵션
  */
-class MinesweeperOption
+public class MinesweeperOption
 {
+	// 생성자를 default로 두어서 패키지 내에 있는 Getter 객체로만 생성이 가능하도록 함
+	MinesweeperOption()
+	{
+		;
+	}
+	
 	private final int MAX_SIZE = 20;
 	private final int MIN_SIZE = 10;
 	private int size = MIN_SIZE;
