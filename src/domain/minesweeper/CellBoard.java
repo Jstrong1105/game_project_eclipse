@@ -45,8 +45,8 @@ class CellBoard
 	private final char MINE_SHPAE = '＊';
 	private final char[] OPEN_SHPAE = {'□','①','②','③','④','⑤','⑥','⑦','⑧'};
 	
-	private final int[] LX = {-1,0,1,-1,1,-1,0,1};	// 주변 8칸을 체크할 x 좌표 배열
-	private final int[] LY = {-1,-1,-1,0,0,1,1,1};	// 주변 8칸을 체크할 y 좌표 배열
+	private final int[] LX = {-1,-1,-1,0,0,1,1,1};	// 주변 8칸을 체크할 x 좌표 배열
+	private final int[] LY = {-1,0,1,-1,1,-1,0,1};	// 주변 8칸을 체크할 y 좌표 배열
 	
 	private final int SIZE;			// 보드판의 가로 세로
 	private final int MINE_COUNT;	// 보드판의 지뢰 개수	
@@ -238,45 +238,3 @@ class CellBoard
 		return x < 0 || y < 0 || x >= SIZE || y >= SIZE;
 	}
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

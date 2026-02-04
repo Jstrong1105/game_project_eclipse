@@ -1,7 +1,7 @@
 package domain.base;
 
 /*
- * 결과의 나열
+ * 게임 결과의 나열
  */
 public enum GameResultType
 {

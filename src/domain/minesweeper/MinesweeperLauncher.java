@@ -40,6 +40,7 @@ class MinesweeperLauncher extends GameTemplate
 		int mineCount = ((SIZE * SIZE) / LEVEL_LIST[level-1]) * WEIGHT;
 		// 폭탄의 수는 보드판의 크기 * 레벨 * 폭탄 배율
 		board = new CellBoard(SIZE, mineCount);
+		first = true;
 		startTime = Instant.now();
 	}
 

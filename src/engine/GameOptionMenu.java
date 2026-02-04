@@ -3,6 +3,10 @@ package engine;
 import domain.base.GameOptionTemplate;
 import util.InputHandler;
 
+/*
+ * 범용 옵션 세팅기
+ * 어떤 게임의 어떤 옵션이든 수정할 수 있는 객체
+ */
 class GameOptionMenu<T , E extends Enum<E> & GameOptionTemplate<T>>
 {
 	GameOptionMenu(T option, E[] menuList)
