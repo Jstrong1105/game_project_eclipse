@@ -12,7 +12,7 @@ public class CardPrinter
 	{
 		int size = cardList.size();
 		
-		for(int i = 0; i < size; i++) { System.out.print("┌────┐ "); }
+		for(int i = 0; i < size; i++) { System.out.print("┌───────┐ "); }
 		System.out.println();
 		for(Card card : cardList) 
 		{ 
@@ -30,11 +30,11 @@ public class CardPrinter
 		{
 			if(card.isOpen())
 			{
-				System.out.printf("│    %c   │ ",numberShape[card.getNumber()-2]);
+				System.out.printf("│   %c   │ ",numberShape[card.getNumber()-2]);
 			}
 			else
 			{
-				System.out.printf("│    %c   │ ",hiddenShape);
+				System.out.printf("│   %c   │ ",hiddenShape);
 			}
 		}
 		System.out.println();
@@ -51,7 +51,7 @@ public class CardPrinter
 			
 		}
 		System.out.println();
-		for(int i = 0; i < size; i++) { System.out.print("└────┘ "); }
+		for(int i = 0; i < size; i++) { System.out.print("└───────┘ "); }
 	}
 	
 	// 테스트용 메인 메소드

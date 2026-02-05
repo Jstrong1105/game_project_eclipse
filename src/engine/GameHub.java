@@ -1,13 +1,18 @@
 package engine;
 
+import domain.memorygame.MemoryGameGetter;
 import domain.minesweeper.MinesweeperGetter;
 
 enum GameHub
 {
 	MINESWEEPER("지뢰찾기","지뢰가 아닌 셀을 모두 여세요!",
-			MinesweeperGetter :: getMinesweeperLauncher,
-			MinesweeperGetter :: setOption)
+			MinesweeperGetter :: startGame,
+			MinesweeperGetter :: setOption),
+	MEMORYGAME("메모리게임","같은 카드를 전부 맞추세요!",
+			MemoryGameGetter :: startGame,
+			MemoryGameGetter :: setOption)
 	;
+	
 	
 	GameHub(String name,String explain, Runnable creator, Runnable optionSetter)
 	{

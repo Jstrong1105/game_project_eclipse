@@ -11,12 +11,12 @@ public class ProgramLauncher
 	{
 		int option = GAMES.length+1;
 		
+		System.out.print("로딩 중입니다.");
+		
+		GameSleeper.sleepGame(2);
+		
 		while(true)
 		{
-			System.out.print("로딩 중입니다.");
-			
-			GameSleeper.sleepGame(2);
-			
 			System.out.println("====게임실행런처====");
 			
 			System.out.println(EXIT + ". 종료");

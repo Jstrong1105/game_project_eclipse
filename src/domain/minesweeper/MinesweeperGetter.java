@@ -34,7 +34,7 @@ public class MinesweeperGetter
 	}
 	
 	// 시작하기
-	public static void getMinesweeperLauncher()
+	public static void startGame()
 	{
 		GameLauncher game =  new MinesweeperLauncher(getMinesweeperOption());
 		game.run();
@@ -45,6 +45,5 @@ public class MinesweeperGetter
 	{	
 		GameOptionMenu<MinesweeperOption,MinesweeperOptionList> optionMenu = new GameOptionMenu<>(getMinesweeperOption(),getMinesweeperOptionList());
 		optionMenu.setOption("지뢰찾기 옵션");
-		
 	}
 }
