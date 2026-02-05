@@ -26,7 +26,8 @@ public abstract class GameTemplate implements GameLauncher
 			
 		} while (restart());
 		
-		InputHandler.readString("게임을 종료합니다.");
+		InputHandler.readString("게임 런처로 돌아갑니다.");
+		System.out.println();
 	}
 	
 	// 실행 흐름

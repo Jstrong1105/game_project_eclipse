@@ -9,12 +9,13 @@ public class GameSleeper
 		{
 			for (int i = seconds; i > 0; i--)
 			{
-				System.out.printf("\r%2d초 남았습니다.",i);
+				System.out.printf("\r%d초 남았습니다.",i);
 				Thread.sleep(1000);
 			}
 			
-			System.out.println("0초 남았습니다.");
+			System.out.printf("\r0초 남았습니다.\n");
 			Thread.sleep(500);
+			System.out.println();
 		}
 		catch (InterruptedException e) {
 			System.out.println(e.toString());

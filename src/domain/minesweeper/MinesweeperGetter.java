@@ -1,15 +1,18 @@
 package domain.minesweeper;
 
+import domain.base.GameLauncher;
+import domain.base.GameOptionMenu;
+
 /*
  * 외부에서 해당 패키지에 있는 런처나 옵션 등에 접근 할 수 있는 객체
  */
 public class MinesweeperGetter
 {
 	private static MinesweeperOption option;
-	private static MinesweeperOptionList[] optionList;
+	private static MinesweeperOptionList[] list;
 	
 	// 옵션 얻기
-	public static MinesweeperOption getMinesweeperOption()
+	private static MinesweeperOption getMinesweeperOption()
 	{
 		if(option == null)
 		{
@@ -19,25 +22,29 @@ public class MinesweeperGetter
 		return option;
 	}
 	
-	// 런처 얻기
-	public static MinesweeperLauncher getMinesweeperLauncher()
+	// 옵션 리스트 얻기
+	private static MinesweeperOptionList[] getMinesweeperOptionList()
 	{
-		if(option == null)
+		if(list == null)
 		{
-			option = new MinesweeperOption();
-		}
-
-		return new MinesweeperLauncher(option);
-	}
-	
-	// 옵션 세터 얻기
-	public static MinesweeperOptionList[] getMinesweeperOptionList()
-	{
-		if(optionList == null)
-		{
-			optionList = MinesweeperOptionList.values();
+			list = MinesweeperOptionList.values();
 		}
 		
-		return optionList;
+		return list;
+	}
+	
+	// 시작하기
+	public static void getMinesweeperLauncher()
+	{
+		GameLauncher game =  new MinesweeperLauncher(getMinesweeperOption());
+		game.run();
+	}
+	
+	// 옵션 수정하기
+	public static void setOption()
+	{	
+		GameOptionMenu<MinesweeperOption,MinesweeperOptionList> optionMenu = new GameOptionMenu<>(getMinesweeperOption(),getMinesweeperOptionList());
+		optionMenu.setOption("지뢰찾기 옵션");
+		
 	}
 }

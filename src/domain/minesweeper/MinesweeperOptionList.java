@@ -3,7 +3,7 @@ package domain.minesweeper;
 import domain.base.GameOptionTemplate;
 import util.InputHandler;
 
-public enum MinesweeperOptionList implements GameOptionTemplate<MinesweeperOption>
+enum MinesweeperOptionList implements GameOptionTemplate<MinesweeperOption>
 {
 	SIZE("사이즈","보드판의 가로,세로 길이",
 		(option) -> {

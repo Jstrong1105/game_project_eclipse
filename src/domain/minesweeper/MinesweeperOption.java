@@ -3,7 +3,7 @@ package domain.minesweeper;
 /*
  * 지뢰찾기 옵션
  */
-public class MinesweeperOption
+class MinesweeperOption
 {
 	// 생성자를 default 로 두어서 패키지 내에 있는 Getter 객체로만 생성이 가능하도록 함
 	MinesweeperOption()
