@@ -2,6 +2,7 @@ package engine;
 
 import domain.memorygame.MemoryGameGetter;
 import domain.minesweeper.MinesweeperGetter;
+import domain.pokergamble.PokerGambleGetter;
 
 enum GameHub
 {
@@ -10,7 +11,10 @@ enum GameHub
 			MinesweeperGetter :: setOption),
 	MEMORYGAME("메모리게임","같은 카드를 전부 맞추세요!",
 			MemoryGameGetter :: startGame,
-			MemoryGameGetter :: setOption)
+			MemoryGameGetter :: setOption),
+	POKERGAMBLE("포커겜블","포커를 승리해 목표 코인을 달성하세요!",
+			PokerGambleGetter :: startGame,
+			PokerGambleGetter :: setOption)
 	;
 	
 	

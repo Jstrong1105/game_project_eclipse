@@ -49,4 +49,12 @@ class HandCard
 	{
 		printer.printCard(handCard);
 	}
+	
+	// 결과 반환
+	PokerRankingResult getResult()
+	{
+		PokerRankingEvaluator eval = new PokerRankingEvaluator(handCard);
+		
+		return eval.getResult();
+	}
 }

@@ -1,6 +1,7 @@
 package domain.base;
 
 import util.InputHandler;
+import util.ScreenCleaner;
 
 /*
  * 범용 옵션 세팅기
@@ -22,6 +23,8 @@ public class GameOptionMenu<T , E extends Enum<E> & GameOptionTemplate<T>>
 	{
 		while(true)
 		{
+			ScreenCleaner.cleanScreen();
+			
 			System.out.printf("\n====%s====\n",gameName);
 			
 			System.out.println("0. 뒤로가기");

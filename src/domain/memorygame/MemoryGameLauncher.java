@@ -39,6 +39,8 @@ class MemoryGameLauncher extends GameTemplate
 	@Override
 	protected void initialize()
 	{	
+		ScreenCleaner.cleanScreen();
+		
 		InputHandler.readString("메모리 게임입니다. 준비 되면 엔터를 눌러주세요.");
 
 		// 속성 초기화

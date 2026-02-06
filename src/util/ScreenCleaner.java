@@ -7,9 +7,7 @@ public class ScreenCleaner
 {
 	public static void cleanScreen()
 	{
-		for(int i = 0; i < 50; i++)
-		{
-			System.out.println();
-		}
+		System.out.print("\033[H\033[2J\033[3J");
+		System.out.flush();
 	}
 }

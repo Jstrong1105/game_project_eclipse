@@ -12,12 +12,14 @@ public class ProgramLauncher
 	{
 		int option = GAMES.length+1;
 		
-		System.out.println("로딩 중입니다.");
+		System.out.println(" 로딩 중입니다.");
 		
 		GameSleeper.sleepGame(2);
 		
 		while(true)
 		{
+			ScreenCleaner.cleanScreen();
+			
 			System.out.println("====게임실행런처====");
 			
 			System.out.println(EXIT + ". 종료");
@@ -61,6 +63,8 @@ public class ProgramLauncher
 	{
 		while(true)
 		{
+			ScreenCleaner.cleanScreen();
+			
 			System.out.println("====게임옵션 설정====");
 			System.out.println(EXIT + ". 뒤로가기");
 			

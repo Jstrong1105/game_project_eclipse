@@ -7,6 +7,7 @@ import domain.base.GameResult;
 import domain.base.GameResultType;
 import domain.base.GameTemplate;
 import util.InputHandler;
+import util.ScreenCleaner;
 
 class MinesweeperLauncher extends GameTemplate
 {
@@ -34,6 +35,8 @@ class MinesweeperLauncher extends GameTemplate
 	@Override
 	protected void initialize()
 	{
+		ScreenCleaner.cleanScreen();
+		
 		InputHandler.readString("지뢰찾기 게임입니다. 준비되면 엔터를 눌러주세요.");
 		
 		System.out.println();
@@ -49,6 +52,8 @@ class MinesweeperLauncher extends GameTemplate
 	@Override
 	protected void render()
 	{
+		ScreenCleaner.cleanScreen();
+		
 		board.printBoard();
 	}
 
