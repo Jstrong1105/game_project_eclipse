@@ -1,6 +1,7 @@
 package domain.base;
 
 import util.InputHandler;
+import util.ScreenCleaner;
 
 /*
  * 모든 게임이 구현해야할 메소드와 
@@ -27,7 +28,8 @@ public abstract class GameTemplate implements GameLauncher
 		} while (restart());
 		
 		InputHandler.readString("게임 런처로 돌아갑니다.");
-		System.out.println();
+		
+		ScreenCleaner.cleanScreen();
 	}
 	
 	// 실행 흐름

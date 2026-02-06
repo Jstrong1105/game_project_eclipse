@@ -42,8 +42,8 @@ class CellBoard
 	// 화면단에 출력할 모양
 	private final char CLOSE_SHPAE = '■';
 	private final char FLAG_SHPAE = '§';
-	private final char MINE_SHPAE = '＊';
-	private final char[] OPEN_SHPAE = {'□','①','②','③','④','⑤','⑥','⑦','⑧'};
+	private final char MINE_SHPAE = '*';
+	private final char[] OPEN_SHPAE = {'□','1','2','3','4','5','6','7','8'};
 	
 	private final int[] LX = {-1,-1,-1,0,0,1,1,1};	// 주변 8칸을 체크할 x 좌표 배열
 	private final int[] LY = {-1,0,1,-1,1,-1,0,1};	// 주변 8칸을 체크할 y 좌표 배열
@@ -59,11 +59,11 @@ class CellBoard
 	// 보드 출력
 	void printBoard()
 	{
-		for(int i = 0; i < SIZE * 2; i++){System.out.print("=");}
+		for(int i = 0; i < SIZE * 1.4; i++){System.out.print("=");}
 		
 		System.out.print("지뢰찾기");
 		
-		for(int i = 0; i < SIZE * 2; i++){System.out.print("=");}
+		for(int i = 0; i < SIZE * 1.4; i++){System.out.print("=");}
 		
 		System.out.println();
 		
@@ -100,7 +100,7 @@ class CellBoard
 						shape = OPEN_SHPAE[board[i][j].getAdjacentMines()];
 					}
 				}
-				System.out.printf("%2c",shape);
+				System.out.printf("%2c ",shape);
 			}
 			
 			System.out.println();

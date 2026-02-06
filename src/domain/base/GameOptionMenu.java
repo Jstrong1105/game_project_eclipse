@@ -44,7 +44,7 @@ public class GameOptionMenu<T , E extends Enum<E> & GameOptionTemplate<T>>
 			answer--;
 			
 			menuList[answer].setOption(option);
-			System.out.println("옵션이 변경되었습니다.");
+			InputHandler.readString("옵션이 변경되었습니다");
 		}
 	}
 }

@@ -2,6 +2,7 @@ package engine;
 
 import util.GameSleeper;
 import util.InputHandler;
+import util.ScreenCleaner;
 
 public class ProgramLauncher
 {
@@ -11,7 +12,7 @@ public class ProgramLauncher
 	{
 		int option = GAMES.length+1;
 		
-		System.out.print("로딩 중입니다.");
+		System.out.println("로딩 중입니다.");
 		
 		GameSleeper.sleepGame(2);
 		
@@ -52,6 +53,8 @@ public class ProgramLauncher
 				System.out.println("잘못된 번호입니다.");
 			}
 		}
+		
+		InputHandler.closeStream();
 	}
 	
 	private static void setOption()
@@ -73,7 +76,7 @@ public class ProgramLauncher
 			if(answer == EXIT)
 			{
 				InputHandler.readString("런처화면으로 돌아갑니다.");
-				System.out.println();
+				ScreenCleaner.cleanScreen();
 				break;
 			}
 			
@@ -87,4 +90,6 @@ public class ProgramLauncher
 			}
 		}
 	}
+	
+	
 }

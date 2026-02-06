@@ -9,7 +9,6 @@ public class InputHandler
 	
 	private static final BufferedReader br = new BufferedReader(new InputStreamReader(System.in)); 
 	
-	
 	// 문자를 입력받는 메소드
 	public static String readString(String prompt)
 	{
@@ -19,7 +18,7 @@ public class InputHandler
 			
 			while(br.ready())
 			{
-				br.skip(100);
+				br.readLine();
 			}
 			
 			return br.readLine().trim();
@@ -83,6 +82,20 @@ public class InputHandler
 			{
 				System.out.println("잘못된 입력입니다.");
 			}
+		}
+	}
+	
+	// 스트림 닫기
+	public static void closeStream()
+	{
+		try
+		{
+			br.close();
+		}
+		
+		catch (IOException e) 
+		{
+			throw new RuntimeException("입력 스트림 오류");
 		}
 	}
 }

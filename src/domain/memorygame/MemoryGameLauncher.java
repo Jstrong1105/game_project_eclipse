@@ -10,6 +10,7 @@ import domain.base.GameResultType;
 import domain.base.GameTemplate;
 import util.GameSleeper;
 import util.InputHandler;
+import util.ScreenCleaner;
 
 /*
  * 메모리 게임 구체화 런처
@@ -60,7 +61,7 @@ class MemoryGameLauncher extends GameTemplate
 		// 10초 * 가중치 만큼 보여준다.
 		GameSleeper.sleepGame(10 * WEIGHT);
 		
-		cleanScreen();
+		ScreenCleaner.cleanScreen();
 		
 		// 모든 카드 숨김
 		for(int i = 0; i < COUNT * PAIR; i++)
@@ -103,7 +104,7 @@ class MemoryGameLauncher extends GameTemplate
 				}
 			}
 			
-			cleanScreen();
+			ScreenCleaner.cleanScreen();
 			render();
 		}
 	}
@@ -124,7 +125,7 @@ class MemoryGameLauncher extends GameTemplate
 				}
 				GameSleeper.sleepGame(3 * WEIGHT);
 				
-				cleanScreen();
+				ScreenCleaner.cleanScreen();
 				return;
 			}
 		}
@@ -133,7 +134,7 @@ class MemoryGameLauncher extends GameTemplate
 		
 		GameSleeper.sleepGame(1);
 		
-		cleanScreen();
+		ScreenCleaner.cleanScreen();
 		
 		openCount += PAIR;
 		
@@ -146,6 +147,8 @@ class MemoryGameLauncher extends GameTemplate
 	@Override
 	protected void finish(GameResult result)
 	{
+		table.printCard();
+		
 		System.out.println("모든 카드를 맞췄습니다.");
 	
 		Instant endTime = Instant.now();
@@ -153,14 +156,5 @@ class MemoryGameLauncher extends GameTemplate
 		System.out.printf("소요시간 : %d초\n",Duration.between(startTime, endTime).getSeconds());
 		
 		endGame();
-	}
-	
-	// 화면 청소 
-	private void cleanScreen()
-	{
-		for(int i = 0; i < 30; i++)
-		{
-			System.out.println();
-		}
 	}
 }
