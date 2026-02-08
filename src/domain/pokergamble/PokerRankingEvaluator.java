@@ -277,7 +277,7 @@ class PokerRankingEvaluator
 			int n = 0;
 			
 			// 플러시를 이루는 숫자 중 가장 큰 5개 추가하기
-			for(int i : flushCount)
+			for(int i : flushOrder)
 			{
 				result.addKicker(i);
 				n++;

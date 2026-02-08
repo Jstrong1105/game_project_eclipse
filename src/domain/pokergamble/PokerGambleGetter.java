@@ -28,10 +28,9 @@ public class PokerGambleGetter
 		return list;
 	}
 	
-	public static void startGame()
+	public static GameLauncher getGame()
 	{
-		GameLauncher game = new PokerGambleLauncher(getOption());
-		game.run();
+		return new PokerGambleLauncher(getOption());
 	}
 	
 	public static void setOption()

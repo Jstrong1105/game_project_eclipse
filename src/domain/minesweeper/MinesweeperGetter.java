@@ -33,11 +33,10 @@ public class MinesweeperGetter
 		return list;
 	}
 	
-	// 시작하기
-	public static void startGame()
-	{
-		GameLauncher game =  new MinesweeperLauncher(getMinesweeperOption());
-		game.run();
+	// 객체 반환하기
+	public static GameLauncher getGame()
+	{  
+		return new MinesweeperLauncher(getMinesweeperOption());
 	}
 	
 	// 옵션 수정하기

@@ -24,7 +24,7 @@ class HandCard
 	// 카드 오픈하기
 	void openCard(int index)
 	{
-		if(handCard.size() < index)
+		if(handCard.size() <= index)
 		{
 			throw new IllegalArgumentException("존재하지 않는 카드입니다.");
 		}

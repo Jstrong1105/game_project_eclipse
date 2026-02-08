@@ -170,36 +170,40 @@ class PokerGambleLauncher extends GameTemplate
 	{
 		ScreenCleaner.cleanScreen();
 		
-		for(int i : hiddenCard)
-		{
-			if(i < cpuCard.countCard())
-			{
-				cpuCard.openCard(i);
-			}
-		}
-		
-		cpuCard.printCard();
-		System.out.println(cpuResult.getName());
-		playerCard.printCard();
-		System.out.println(playerResult.getName());
-		
-		if(result.isWin())
-		{
-			System.out.println("승리했습니다.");
-			playerCoin += totalBetCoin * 2 * WEIGHT;
-		}
-		else if(result.isFold())
+		if(result.isFold())
 		{
 			System.out.println("기권했습니다.");
 		}
-		else if(result.isLose())
+		else 
 		{
-			System.out.println("패배했습니다.");
-		}
-		else if(result.isDraw())
-		{
-			System.out.println("무승부입니다.");
-			playerCoin += totalBetCoin;
+			for(int i : hiddenCard)
+			{
+				if(i < cpuCard.countCard())
+				{
+					cpuCard.openCard(i);
+				}
+			}
+			
+			cpuCard.printCard();
+			System.out.println(cpuResult.getName());
+			
+			playerCard.printCard();
+			System.out.println(playerResult.getName());
+			
+			if(result.isWin())
+			{
+				System.out.println("승리했습니다.");
+				playerCoin += totalBetCoin * 2 * WEIGHT;
+			}
+			else if(result.isLose())
+			{
+				System.out.println("패배했습니다.");
+			}
+			else if(result.isDraw())
+			{
+				System.out.println("무승부입니다.");
+				playerCoin += totalBetCoin;
+			}
 		}
 		
 		InputHandler.readString("");

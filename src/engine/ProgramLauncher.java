@@ -1,5 +1,6 @@
 package engine;
 
+import domain.base.GameLauncher;
 import util.GameSleeper;
 import util.InputHandler;
 import util.ScreenCleaner;
@@ -15,6 +16,8 @@ public class ProgramLauncher
 		System.out.println(" 로딩 중입니다.");
 		
 		GameSleeper.sleepGame(2);
+		
+		GameLauncher launcher;
 		
 		while(true)
 		{
@@ -48,7 +51,8 @@ public class ProgramLauncher
 			else if(answer >= 1 && answer < option)
 			{
 				System.out.println();
-				GAMES[answer-1].startGame();
+				launcher = GAMES[answer-1].getGame();
+				launcher.run();
 			}
 			else
 			{

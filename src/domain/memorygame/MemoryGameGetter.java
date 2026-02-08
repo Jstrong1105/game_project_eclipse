@@ -20,11 +20,10 @@ public class MemoryGameGetter
 		return option;
 	}
 	
-	// 시작하기
-	public static void startGame()
+	// 객체 반환하기
+	public static GameLauncher getGame()
 	{
-		GameLauncher game = new MemoryGameLauncher(getOption());
-		game.run();
+		return new MemoryGameLauncher(getOption());
 	}
 	
 	// 옵션 수정

@@ -4,8 +4,13 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-public class InputHandler
+public final class InputHandler
 {
+	
+	private InputHandler()
+	{
+		
+	}
 	
 	private static final BufferedReader br = new BufferedReader(new InputStreamReader(System.in)); 
 	
@@ -16,10 +21,7 @@ public class InputHandler
 		{
 			System.out.print(prompt);
 			
-			while(br.ready())
-			{
-				br.readLine();
-			}
+			System.out.flush();
 			
 			return br.readLine().trim();
 		}
