@@ -54,6 +54,7 @@ class HandCard
 	PokerRankingResult getResult()
 	{
 		PokerRankingEvaluator eval = new PokerRankingEvaluator(handCard);
+		// 족보 계산기
 		
 		return eval.getResult();
 	}

@@ -29,18 +29,6 @@ class PokerRankingResult implements Comparable<PokerRankingResult>
 	{
 		return ranking.getName();
 	}
-	
-	// 족보 파워 반환
-	int getPower()
-	{
-		return ranking.getPower();
-	}
-	
-	// 키커 반환하기
-	List<Integer> getKicker()
-	{
-		return kicker;
-	}
 
 	@Override
 	public int compareTo(PokerRankingResult o)

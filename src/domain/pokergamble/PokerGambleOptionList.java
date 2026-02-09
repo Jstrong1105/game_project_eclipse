@@ -12,13 +12,13 @@ enum PokerGambleOptionList implements GameOptionTemplate<PokerGambleOption>
 	TARGET_COIN("목표 코인","목표로 할 코인을 결정합니다.",
 			(option) -> {
 			int target = InputHandler.readIntRange(String.format("목표 코인을 입력하세요. (%d~%d) : ", 
-					option.getMinTarget(),option.getMaxTarget()	),
+					option.getMinTarget(),option.getMaxTarget()),
 					option.getMinTarget(),option.getMaxTarget());
 					option.setTarget(target);}),
 	WEIGHT("가중치","승리 시 획득하는 배율을 결정합니다.",
 			(option) -> {
 			int weight = InputHandler.readIntRange(String.format("가중치를 입력하세요. (%d~%d) : ", 
-					option.getMinWeight(),option.getMaxWeight()  ), 
+					option.getMinWeight(),option.getMaxWeight()), 
 					option.getMinWeight(),option.getMaxWeight());
 					option.setWeight(weight);})
 	;

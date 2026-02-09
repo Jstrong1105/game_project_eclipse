@@ -3,6 +3,9 @@ package domain.pokergamble;
 import domain.base.GameLauncher;
 import domain.base.GameOptionMenu;
 
+/*
+ * 패키지를 외부와 연결하는 다리
+ */
 public class PokerGambleGetter
 {
 	private static PokerGambleOption option;

@@ -1,6 +1,7 @@
 package engine;
 
 import domain.base.GameLauncher;
+import domain.playerdata.PlayerData;
 import util.GameSleeper;
 import util.InputHandler;
 import util.ScreenCleaner;
@@ -9,9 +10,16 @@ public class ProgramLauncher
 {
 	private static final GameHub[] GAMES = GameHub.values();
 	private static final int EXIT = 0;
+	
+	public static final PlayerData playerData = new PlayerData();
+	
+	public static String playerId;
+	
 	public static void main(String[] args)
 	{
 		int option = GAMES.length+1;
+		
+		playerData.load();
 		
 		System.out.println(" 로딩 중입니다.");
 		
@@ -19,7 +27,9 @@ public class ProgramLauncher
 		
 		GameLauncher launcher;
 		
-		while(true)
+		boolean run = login();
+		
+		while(run)
 		{
 			ScreenCleaner.cleanScreen();
 			
@@ -41,7 +51,7 @@ public class ProgramLauncher
 			if(answer == EXIT)
 			{
 				InputHandler.readString("프로그램을 종료합니다");
-				break;
+				run = false;
 			}
 			else if(answer == option)
 			{
@@ -61,6 +71,50 @@ public class ProgramLauncher
 		}
 		
 		InputHandler.closeStream();
+	}
+	
+	private static boolean login()
+	{
+		while(true)
+		{
+			System.out.println("1. 로그인");
+			System.out.println("2. 회원가입");
+			System.out.println("3. 종료");
+			
+			int answer = InputHandler.readIntRange("번호를 선택해주세요 : ", 1, 3);
+			
+			if(answer == 3)
+			{
+				return false;
+			}
+			else if(answer == 1)
+			{
+				playerId = InputHandler.readString("아이디를 입력해주세요 : ");
+				
+				if(playerData.hasId(playerId))
+				{
+					System.out.println("로그인 성공");
+					return true;
+				}
+				else
+				{
+					System.out.println("존재하지 않는 아이디입니다.");
+				}
+			}
+			else
+			{
+				playerId = InputHandler.readString("가입할 아이디를 입력해주세요 : ");
+				if(playerData.hasId(playerId))
+				{
+					System.out.println("이미 존재하는 계정입니다.");
+				}
+				else
+				{
+					playerData.addPlayer(playerId);
+					System.out.println("회원 가입 완료");
+				}
+			}
+		}
 	}
 	
 	private static void setOption()

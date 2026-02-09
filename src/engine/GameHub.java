@@ -5,7 +5,7 @@ import domain.memorygame.MemoryGameGetter;
 import domain.minesweeper.MinesweeperGetter;
 import domain.pokergamble.PokerGambleGetter;
 
-enum GameHub
+public enum GameHub
 {
 	MINESWEEPER("지뢰찾기","지뢰가 아닌 셀을 모두 여세요!",
 			MinesweeperGetter :: getGame,

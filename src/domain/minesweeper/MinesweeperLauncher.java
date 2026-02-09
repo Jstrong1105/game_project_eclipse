@@ -29,6 +29,7 @@ class MinesweeperLauncher extends GameTemplate
 	private final int openNumber = 1;
 	private final int flagNumber = 2;
 	private Instant startTime;	// 시작한 시간
+	private Instant endTime;	// 종료시간
 	
 	private final int[] LEVEL_LIST = {10,5,4};
 	
@@ -105,20 +106,22 @@ class MinesweeperLauncher extends GameTemplate
 		
 		if(board.isClear())
 		{
-			finish(new GameResult(GameResultType.WIN));
+			endTime = Instant.now();
+			finish(new GameResult(GameResultType.WIN,(int)Duration.between(startTime, endTime).getSeconds()));
 		}
 	}
 
 	@Override
 	protected void finish(GameResult result)
 	{
+		ScreenCleaner.cleanScreen();
+		
 		board.openMine();
 		board.printBoard();
 		if(result.isWin())
 		{
 			System.out.println("축하합니다. 모든 폭탄을 찾아냈습니다.");
-			Duration clearTime = Duration.between(startTime, Instant.now());
-			System.out.println("클리어 시간 : " + clearTime.getSeconds() + "초");
+			System.out.println("클리어 시간 : " + (int)Duration.between(startTime, endTime).getSeconds() + "초");
 		}
 		else
 		{

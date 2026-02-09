@@ -8,6 +8,8 @@ import java.util.List;
 import domain.base.GameResult;
 import domain.base.GameResultType;
 import domain.base.GameTemplate;
+import engine.GameHub;
+import engine.ProgramLauncher;
 import util.GameSleeper;
 import util.InputHandler;
 import util.ScreenCleaner;
@@ -24,6 +26,10 @@ class MemoryGameLauncher extends GameTemplate
 		WEIGHT = option.getWeight();
 	}
 	
+	private int tryCount;
+	private int clearCount;
+	private int minClearTime;
+	
 	private final int COUNT;	// 카드의 개수
 	private final int PAIR;		// 카드의 짝
 	private final int WEIGHT; 	// 시간 가중치
@@ -35,7 +41,8 @@ class MemoryGameLauncher extends GameTemplate
 	private int openCount;
 	
 	private Instant startTime;	// 시작한 시간
-	
+	private Instant endTime;	// 종료 시간
+	private int clearTime;		// 클리어 시간(초)
 	@Override
 	protected void initialize()
 	{	
@@ -43,6 +50,12 @@ class MemoryGameLauncher extends GameTemplate
 		
 		InputHandler.readString("메모리 게임입니다. 준비 되면 엔터를 눌러주세요.");
 
+		int[] data = ProgramLauncher.playerData.getData(ProgramLauncher.playerId, GameHub.MEMORY_GAME);
+		
+		tryCount = data[0];
+		clearCount = data[1];
+		minClearTime = data[2];
+		
 		// 속성 초기화
 		openCount = 0;
 		
@@ -55,6 +68,10 @@ class MemoryGameLauncher extends GameTemplate
 		{
 			table.openCard(i);
 		}
+		
+		System.out.println("당신의 도전 횟수 : " + tryCount);
+		System.out.println("당신의 클리어 횟수 : " + clearCount);
+		System.out.println("당신의 최단 클리어 기록 : " + minClearTime);
 		
 		InputHandler.readString("엔터를 누르면 카드가 보여집니다. 카드를 기억하세요!");
 		
@@ -142,7 +159,10 @@ class MemoryGameLauncher extends GameTemplate
 		
 		if(openCount >= PAIR * COUNT)
 		{
-			finish(new GameResult(GameResultType.WIN));
+			endTime = Instant.now();
+			
+			clearTime = (int)Duration.between(startTime, endTime).getSeconds();
+			finish(new GameResult(GameResultType.WIN, clearTime));
 		}
 	}
 
@@ -153,9 +173,9 @@ class MemoryGameLauncher extends GameTemplate
 		
 		System.out.println("모든 카드를 맞췄습니다.");
 	
-		Instant endTime = Instant.now();
+		System.out.printf("소요시간 : %d초\n",clearTime);
 		
-		System.out.printf("소요시간 : %d초\n",Duration.between(startTime, endTime).getSeconds());
+		ProgramLauncher.playerData.addData(ProgramLauncher.playerId, GameHub.MEMORY_GAME, result);
 		
 		endGame();
 	}

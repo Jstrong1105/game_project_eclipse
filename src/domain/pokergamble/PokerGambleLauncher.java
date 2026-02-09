@@ -1,6 +1,7 @@
 package domain.pokergamble;
 
 import java.time.Duration;
+
 import java.time.Instant;
 
 import domain.base.GameResult;
@@ -11,6 +12,9 @@ import domain.trumpcard.CardDeck;
 import util.InputHandler;
 import util.ScreenCleaner;
 
+/*
+ * 포커겜블 구체화 객체
+ */
 class PokerGambleLauncher extends GameTemplate
 {
 	PokerGambleLauncher(PokerGambleOption option)
@@ -42,6 +46,7 @@ class PokerGambleLauncher extends GameTemplate
 	private int[] hiddenCard = {0,1,6};
 	
 	private Instant startTime;	// 시작 시간
+	private Instant endTime;	// 종료 시간
 	
 	@Override
 	protected void initialize()
@@ -64,8 +69,6 @@ class PokerGambleLauncher extends GameTemplate
 	// 라운드 초기화
 	private void roundInitialize()
 	{
-		ScreenCleaner.cleanScreen();
-		
 		totalBetCoin = 0;
 		
 		playerCard = new HandCard();
@@ -133,7 +136,7 @@ class PokerGambleLauncher extends GameTemplate
 		// 코인이 남아 있는데 0 을 베팅하면 기권
 		if(betCoin == 0 && playerCoin > 0)
 		{
-			finish(new GameResult(GameResultType.FOLD));
+			roundFinish(new GameResult(GameResultType.FOLD));
 		}
 		
 		// 카드를 개수 만큼 받지 않았다면
@@ -152,24 +155,22 @@ class PokerGambleLauncher extends GameTemplate
 			
 			if(result > 0)
 			{
-				finish(new GameResult(GameResultType.WIN));
+				roundFinish(new GameResult(GameResultType.WIN));
 			}
 			else if(result < 0)
 			{
-				finish(new GameResult(GameResultType.LOSE));
+				roundFinish(new GameResult(GameResultType.LOSE));
 			}
 			else
 			{
-				finish(new GameResult(GameResultType.DRAW));
+				roundFinish(new GameResult(GameResultType.DRAW));
 			}
 		}
 	}
 	
-	@Override
-	protected void finish(GameResult result)
+	// 라운드 종료
+	private void roundFinish(GameResult result)
 	{
-		ScreenCleaner.cleanScreen();
-		
 		if(result.isFold())
 		{
 			System.out.println("기권했습니다.");
@@ -206,23 +207,34 @@ class PokerGambleLauncher extends GameTemplate
 			}
 		}
 		
-		InputHandler.readString("");
-		
 		if(playerCoin >= TARGET)
 		{
-			System.out.println("목표를 달성했습니다.");
-			System.out.println("클리어 시간 : " + Duration.between(startTime, Instant.now()).getSeconds() + "초");
-			endGame();
+			endTime = Instant.now();
+			finish(new GameResult(GameResultType.WIN,(int)Duration.between(startTime, endTime).getSeconds()));
 		}
 		else if(playerCoin <= 0)
 		{
-			System.out.println("모든 코인을 소진했습니다.");
-			endGame();
+			finish(new GameResult(GameResultType.LOSE));
 		}
 		else
 		{
 			roundInitialize();
 		}
+	}
+	
+	@Override
+	protected void finish(GameResult result)
+	{
+		if(result.isWin())
+		{
+			System.out.println("목표를 달성했습니다.");
+		}
+		else
+		{
+			System.out.println("모든 코인을 소진했습니다.");
+		}
+		
+		endGame();
 	}
 	
 	// 카드 나눠주기
